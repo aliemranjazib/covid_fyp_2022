@@ -2,6 +2,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_covid/pages/home.dart';
+import 'package:flutter_application_covid/pages/self_assesment.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const Home(),
+      routes: {
+        '/ques1': (context) => Ques1(),
+        '/ques2': (context) => Ques2(),
+        '/ques3': (context) => Ques3(),
+        '/ques4': (context) => Ques4(),
+        '/ques5': (context) => Ques5(),
+        '/ques6': (context) => Ques6(),
+        '/ques7': (context) => Ques7(),
+        '/quesResult': (context) => QuesResult(),
+      },
     );
   }
 }

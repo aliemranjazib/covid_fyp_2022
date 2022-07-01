@@ -7,10 +7,13 @@ import 'package:flutter_application_covid/pages/live_count.dart';
 import 'package:flutter_application_covid/pages/more_pak.dart';
 import 'package:flutter_application_covid/pages/plasma_work/selectplasma.dart';
 import 'package:flutter_application_covid/pages/preventions.dart';
+import 'package:flutter_application_covid/pages/self_assesment.dart';
 import 'package:flutter_application_covid/pages/stats.dart';
 import 'package:flutter_application_covid/pages/symptoms.dart';
+import 'package:flutter_application_covid/utils/constants.dart';
 import 'package:flutter_application_covid/utils/junction_top_stack.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_covid/widgets/boxdecoration.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -36,6 +39,30 @@ class _CovidCountState extends State<CovidCount> {
     }
   }
 
+  Widget homeButton({
+    required String text,
+    required Function onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap as void Function()?,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        padding: EdgeInsets.all(15),
+        decoration: newboxDecoration(),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: kelectronBlue,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -52,6 +79,14 @@ class _CovidCountState extends State<CovidCount> {
           width: double.infinity,
           child: Column(
             children: [
+              homeButton(
+                  text: 'SELF ASSESMENT',
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => MyAssesment())));
+                  }),
               junctionTopStack(),
               SizedBox(
                 height: 20,
